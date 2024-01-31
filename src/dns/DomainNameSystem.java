@@ -50,7 +50,7 @@ public abstract class DomainNameSystem {
         @Override
         public void run() {
             try {
-                String server_link = client.wait_for_string(true);
+                String server_link = client.wait_for_string();
                 String request = "error";
 
                 if (server_link.charAt(0) == 'd') { //se il client richiede l'ip conoscendo il link
@@ -63,10 +63,12 @@ public abstract class DomainNameSystem {
 
                     Log_panel.log_write("un client si è connesso al dns richiedendo il link di " + server_link.substring(1) + " = " + request + "\n", false);
                 }
-                else {}
+                else {
+                    Log_panel.log_write("è stato ricevuto il messaggio (" + request + ") non riconosciuto\n", true);
+                }
 
-                System.out.println("reply: " + request);
                 client.write(request);
+                client.close();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             } catch (IllegalBlockSizeException e) {
