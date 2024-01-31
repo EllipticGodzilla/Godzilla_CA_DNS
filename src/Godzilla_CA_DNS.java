@@ -27,7 +27,7 @@ public class Godzilla_CA_DNS {
         icons.add(new ImageIcon(Godzilla_CA_DNS.class.getClassLoader().getResourceAsStream("images/icon_128.png").readAllBytes()).getImage());
 
         Main_frame.init(new File(Godzilla_CA_DNS.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParent()).setIconImages(icons); //inizializza la gui
-        Converter.load_from_file(); //inizializza il converter
+        Converter.init(); //inizializza il converter
         CertificateAuthority.init(); //inizializza la ca
 
         Runtime.getRuntime().addShutdownHook(new Thread(shutdown_hook));

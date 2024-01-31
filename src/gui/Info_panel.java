@@ -1,6 +1,8 @@
 package gui;
 
 import certificate_autority.CertificateAuthority;
+import dns.Converter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -139,6 +141,7 @@ public class Info_panel {
             ServerInfo info = new ServerInfo(nome, link, ip, ce, mail);
 
             ServerList_panel.add_server(info);
+            Converter.add_map(link, ip);
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         }
